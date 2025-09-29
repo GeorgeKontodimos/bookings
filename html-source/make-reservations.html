@@ -10,20 +10,10 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-
-    <style>
-        .my-footer {
-            height: 5em;
-            background-color: #163b65;
-            margin-top: 1.5em;
-            padding: 1em;
-            color: white;
-            font-size: 80%;
-        }
-        .room-image{
-            max-width: 50%;
-        }
-    </style>
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.4/dist/css/datepicker-bs4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/styles.css">
 </head>
 
 <body>
@@ -66,22 +56,25 @@
 
 
     <div class="container">
-       
+
         <div class="row">
             <div class="col">
                 <h1>Make Reservation</h1>
                 <form method="post" action="" class="needs-validation" novalidate>
                     <div class="form-group mt-5">
                         <label for="first_name">First name:</label>
-                        <input type="text" name="first_name" id="first_name" required autocomplete="off" class="form-control">
+                        <input type="text" name="first_name" id="first_name" required autocomplete="off"
+                            class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="last_name">Last name:</label>
-                        <input type="text" name="last_name" id="last_name" required autocomplete="off" class="form-control">
+                        <input type="text" name="last_name" id="last_name" required autocomplete="off"
+                            class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="enail">Email:</label>
-                        <input type="email" name="email" id="email" required autocomplete="off" class="form-control" title="Enter your email address">
+                        <input type="email" name="email" id="email" required autocomplete="off" class="form-control"
+                            title="Enter your email address">
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone number:</label>
