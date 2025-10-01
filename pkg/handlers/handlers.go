@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"github.com/georgekontodimos/bookings/pkg/config"
@@ -62,7 +64,6 @@ func (m *Repository) Generals(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "generals.page.tmpl", &models.TemplateData{})
 }
 
-
 // Majors renders the room page
 func (m *Repository) Majors(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "majors.page.tmpl", &models.TemplateData{})
@@ -78,11 +79,30 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	//render.RenderTemplate(w, "search-availablilty.page.tmpl", &models.TemplateData{})
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
-	w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s",start,end)))
+	w.Write([]byte(fmt.Sprintf("start date is %s and end date is %s", start, end)))
+}
+
+type jsonResponse struct {
+	OK      bool   `json:"ok"`
+	Message string `json:"message"`
+}
+
+// AvailabilityJSON handles request for availability and send JSON response
+func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
+	resp := jsonResponse{
+		OK:      false,
+		Message: "Available!",
+	}
+	out,err:= json.MarshalIndent(resp,"","     ")
+	if err != nil{
+		log.Println((err))
+	}
+	log.Println(string(out))
+	w.Header().Set("Content-Type","application/json")
+	w.Write(out)
 }
 
 // Contact renders the search availability page
 func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "contact.page.tmpl", &models.TemplateData{})
 }
-
